@@ -28,7 +28,7 @@ jobs:
 
       - name: Generate config.js
         run: |
-          echo "const SUPABASE_URL = '${{ secrets.SUPABASE_URL }}';" > config.js
+          echo "const SUPABASE_URL = 'https://pcyiegppakilmoafuodc.supabase.co';" > config.js
           echo "const SUPABASE_KEY = '${{ secrets.SUPABASE_KEY }}';" >> config.js
 
       - name: Upload artifact
