@@ -16,6 +16,25 @@
 
   <!-- Favicon (emoji) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+
+  <!-- 기본적인 브라우저 개발자 도구 및 우클릭 방지 스크립트 -->
+  <script>
+    // 우클릭 차단
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    
+    // 키보드 단축키 차단 (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+    document.addEventListener('keydown', event => {
+      if (event.keyCode === 123) { // F12
+        event.preventDefault();
+      }
+      if (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) { // Ctrl+Shift+I or J
+        event.preventDefault();
+      }
+      if (event.ctrlKey && event.keyCode === 85) { // Ctrl+U
+        event.preventDefault();
+      }
+    });
+  </script>
 </head>
 <body>
 
