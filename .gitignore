@@ -1,0 +1,11 @@
+# Supabase API Keys
+config.js
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo

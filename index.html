@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시험 공부 플래너 | 2026</title>
+  <meta name="description" content="6월 1일~7월 6일 시험 기간 공부 계획 관리 대시보드">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon (emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">데이터를 불러오는 중...</div>
+  </div>
+
+  <div class="container">
+
+    <!-- ═══ Header ═══ -->
+    <header class="header">
+      <h1 class="header-title">📚 시험 공부 플래너</h1>
+      <p class="header-subtitle">2026.06.01 — 07.06 &nbsp;·&nbsp; 목표 달성까지 멈추지 않기</p>
+      <div class="dday-container">
+        <span class="dday-label">다음 시험까지</span>
+        <span class="dday-value" id="dday-value">D-??</span>
+      </div>
+    </header>
+
+    <!-- ═══ Dashboard: 과목별 진도 ═══ -->
+    <section class="section" id="section-dashboard">
+      <div class="section-header">
+        <span class="section-icon">📊</span>
+        <h2 class="section-title">과목별 진도</h2>
+        <span class="section-badge">클릭으로 +50%</span>
+      </div>
+
+      <div class="subject-cards" id="subject-cards">
+        <!-- JS에서 동적 생성 -->
+      </div>
+
+      <div class="overall-progress">
+        <div class="overall-header">
+          <span class="overall-label">전체 평균 진도율</span>
+          <span class="overall-value" id="overall-progress-text">0%</span>
+        </div>
+        <div class="overall-bar">
+          <div class="overall-fill" id="overall-progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Exam Info Table ═══ -->
+    <section class="section" id="section-exam-info">
+      <div class="section-header">
+        <span class="section-icon">📋</span>
+        <h2 class="section-title">시험 정보</h2>
+        <span class="section-badge">클릭하여 편집</span>
+      </div>
+
+      <div class="exam-table-wrapper">
+        <table class="exam-table" id="exam-table">
+          <thead>
+            <tr>
+              <th>과목</th>
+              <th>시험 날짜</th>
+              <th>시험 범위</th>
+            </tr>
+          </thead>
+          <tbody id="exam-table-body">
+            <!-- JS에서 동적 생성 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══ Weekly Calendar ═══ -->
+    <section class="section" id="section-calendar">
+      <div class="section-header">
+        <span class="section-icon">📅</span>
+        <h2 class="section-title">주간 계획</h2>
+        <span class="section-badge">셀 클릭하여 입력</span>
+      </div>
+
+      <div class="calendar-grid" id="calendar-grid">
+        <!-- JS에서 동적 생성 -->
+      </div>
+    </section>
+
+    <!-- ═══ Reset Button ═══ -->
+    <div class="reset-area">
+      <button class="btn-reset" id="reset-btn">🔄 계획 초기화</button>
+    </div>
+
+  </div>
+
+  <!-- ═══ Reset Confirmation Modal ═══ -->
+  <div class="modal-overlay" id="reset-modal">
+    <div class="modal">
+      <div class="modal-icon">⚠️</div>
+      <h3>계획 초기화</h3>
+      <p>정말 계획을 초기화 하시겠습니까?</p>
+      <p class="modal-subtitle">모든 진도율, 시험 범위, 할 일이 초기화됩니다.</p>
+      <div class="modal-actions">
+        <button class="btn-confirm" id="reset-confirm">네</button>
+        <button class="btn-cancel" id="reset-cancel">아니요</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Hourly Schedule Modal ═══ -->
+  <div class="modal-overlay" id="hourly-modal">
+    <div class="modal hourly-modal">
+      <div class="modal-header">
+        <h3 id="hourly-modal-title">00/00 일과</h3>
+        <button class="btn-close" id="hourly-modal-close" aria-label="닫기">×</button>
+      </div>
+      <div class="hourly-list" id="hourly-list">
+        <!-- JS에서 동적 생성 -->
+      </div>
+      <div class="hourly-footer">
+        <span class="auto-save-text">✓ 자동 저장됨</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Toast Container ═══ -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts (config.js must load first) -->
+  <script src="config.js"></script>
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
